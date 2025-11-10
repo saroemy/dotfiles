@@ -2,7 +2,7 @@
 
 ## Setup
 
-opy what you need from the `.zshrc` file and all the content of `karabiner.json` to complex modificators of the app.
+Copy what you need from the `.zshrc` file and all the content of `karabiner.json` to complex modificators of the app.
 
 ```bash
 ln -sf ../../.dotfiles/tmux.conf ~/.tmux.conf
