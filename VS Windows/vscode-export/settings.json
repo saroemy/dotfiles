@@ -1,0 +1,196 @@
+{
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.iconTheme": "catppuccin-frappe",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.8,
+  "editor.lineNumbers": "relative",
+  "debug.console.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
+  "workbench.editor.enablePreview": false,
+  "workbench.tree.renderIndentGuides": "always", // Mostra le guide di indentazione
+  // "window.zoomLevel": 0.4,
+  "git.autofetch": true,
+  "editor.minimap.enabled": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "redhat.telemetry.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "[python]": {
+  //   "editor.defaultFormatter": "ms-python.autopep8"
+  // },
+  // "autopep8.args": ["--maxLineLength", "120"],
+  // PERSONAL
+  "breadcrumbs.enabled": false,
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
+  "zenMode.showTabs": "none",
+  "window.title": "${dirty}${rootName}${separator}${activeEditorMedium}",
+  //  VIM KEY MAPPINGS
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": false,
+  "vim.useCtrlKeys": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      "before": ["<leader>", "y"],
+      "after": ["\"", "+", "y"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "after": ["\"", "_", "c"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": [":bd"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["<C-p>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "c", "f"],
+      "commands": ["editor.action.formatDocument"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["extension.fuzzySearch"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "g"],
+      "commands": ["workbench.action.findInFiles"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "v"],
+      "commands": ["workbench.action.quickOpenView"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "z"],
+      "commands": ["workbench.action.toggleZenMode"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "f", "r"],
+      "commands": [
+        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+      ],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "s", "e"],
+      "commands": ["editor.action.showHover"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "s", "d"],
+      "commands": ["workbench.actions.view.problems"],
+      "silent": true
+    },
+    {
+      "before": ["leader", "a", "a"],
+      "commands": ["workbench.panel.chat.view.copilot.focus"]
+    },
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["leader", "a", "e"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<leader>", "y"],
+      "after": ["\"", "+", "y"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "after": ["\"", "_", "c"]
+    },
+    {
+      "before": ["p"],
+      "after": ["\"", "_", "d", "P"]
+    },
+    {
+      "before": ["v"],
+      "commands": ["editor.action.smartSelect.expand"]
+    },
+    {
+      "before": ["V"],
+      "commands": ["editor.action.smartSelect.shrink"]
+    },
+    {
+      "before": ["<C-g>"],
+      "commands": ["editor.action.addSelectionToNextFindMatch"],
+      "silent": true
+    }
+  ],
+  "terminal.integrated.defaultProfile.osx": "tmux-shell",
+  "terminal.integrated.profiles.osx": {
+    "tmux-shell": {
+      "path": "tmux",
+      "args": ["new-session", "-A", "-s", "vscode:${workspaceFolder}"]
+    }
+  },
+}

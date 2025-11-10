@@ -1,0 +1,10 @@
+font-family = "JetBrainsMono Nerd Font"
+font-style = semibold
+font-size = 14.5
+adjust-cell-height = 8
+adjust-cell-width = -1
+theme = Catppuccin Frappe
+background-opacity = 0.98
+confirm-close-surface = false
+macos-option-as-alt = left
+term = xterm-256color
