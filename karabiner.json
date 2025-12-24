@@ -1,5 +1,5 @@
 {
-  "description": "Configurazione per Obsidian-Ghostty-VSCode-Anydesk: Command↔Control e Caps Lock→Esc",
+  "description": "Configurazione per Obsidian-Ghostty-VSCode-Anydesk-TeamViewer: Command↔Control e Caps Lock→Esc",
   "manipulators": [
     {
       "conditions": [
@@ -8,7 +8,8 @@
             "md.obsidian",
             "com.mitchellh.ghostty",
             "com.microsoft.VSCode",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
@@ -27,7 +28,8 @@
             "md.obsidian",
             "com.mitchellh.ghostty",
             "com.microsoft.VSCode",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
@@ -46,7 +48,8 @@
             "md.obsidian",
             "com.microsoft.VSCode",
             "com.mitchellh.ghostty",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
@@ -65,7 +68,8 @@
             "md.obsidian",
             "com.microsoft.VSCode",
             "com.mitchellh.ghostty",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
@@ -84,7 +88,8 @@
             "md.obsidian",
             "com.microsoft.VSCode",
             "com.mitchellh.ghostty",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
@@ -98,12 +103,16 @@
         {
           "bundle_identifiers": [
             "com.mitchellh.ghostty",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
       ],
-      "from": { "key_code": "left_option" },
+      "from": {
+        "key_code": "left_option",
+        "modifiers": { "optional": ["shift"] }
+      },
       "to": [{ "key_code": "right_option" }],
       "type": "basic"
     },
@@ -112,13 +121,58 @@
         {
           "bundle_identifiers": [
             "com.mitchellh.ghostty",
-            "com.philandro.anydesk"
+            "com.philandro.anydesk",
+            "com.teamviewer.TeamViewer"
           ],
           "type": "frontmost_application_if"
         }
       ],
       "from": { "key_code": "fn" },
       "to": [{ "key_code": "left_option" }],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": [
+            "com.mitchellh.ghostty",
+            "company.thebrowser.Browser"
+          ],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": { "mandatory": ["option"] }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": ["control"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": [
+            "com.mitchellh.ghostty",
+            "company.thebrowser.Browser"
+          ],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "l",
+        "modifiers": { "mandatory": ["option"] }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": ["control"]
+        }
+      ],
       "type": "basic"
     }
   ]

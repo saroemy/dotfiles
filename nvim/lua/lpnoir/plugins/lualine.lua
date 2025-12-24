@@ -15,11 +15,17 @@ return {
       lualine_a = {
         {
           'buffers',
+          max_length = vim.o.columns,
           section_separators = { left = '', right = '' },
           component_separators = { left = '', right = '' },
           symbols = { alternate_file = '' },
         },
       },
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
     },
   },
 }

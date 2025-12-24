@@ -10,7 +10,7 @@
   "terminal.integrated.fontSize": 14,
   "workbench.editor.enablePreview": false,
   "workbench.tree.renderIndentGuides": "always", // Mostra le guide di indentazione
-  // "window.zoomLevel": 0.4,
+  "window.zoomLevel": -0.8,
   "git.autofetch": true,
   "editor.minimap.enabled": false,
   "editor.unicodeHighlight.nonBasicASCII": false,
@@ -27,9 +27,9 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // "[python]": {
-  //   "editor.defaultFormatter": "ms-python.autopep8"
-  // },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
   // "autopep8.args": ["--maxLineLength", "120"],
   // PERSONAL
   "breadcrumbs.enabled": false,
@@ -79,10 +79,10 @@
       "before": ["<C-p>"],
       "commands": [":bprevious"]
     },
-    {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
-    },
+    // {
+    //   "before": [":"],
+    //   "commands": ["workbench.action.showCommands"]
+    // },
     {
       "before": ["<leader>", "c", "f"],
       "commands": ["editor.action.formatDocument"],
@@ -90,7 +90,10 @@
     },
     {
       "before": ["<leader>", "f", "f"],
-      "commands": ["extension.fuzzySearch"],
+      // For Mac
+      // "commands": ["fzf-quick-open.initialWorkingDirectory"],
+      // For Windows
+      "commands": ["workbench.action.quickOpen"],
       "silent": true
     },
     {
@@ -134,6 +137,15 @@
       "before": ["leader", "a", "a"],
       "commands": ["workbench.panel.chat.view.copilot.focus"]
     },
+    {
+      "before": ["<leader>", "p"],
+      "after": ["\"", "+", "P"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"],
+      "silent": true
+    }
   ],
   "vim.visualModeKeyBindings": [
     {
@@ -169,6 +181,10 @@
       "after": ["\"", "_", "c"]
     },
     {
+      "before": ["<leader>", "p"],
+      "after": ["\"", "+", "P"]
+    },
+    {
       "before": ["p"],
       "after": ["\"", "_", "d", "P"]
     },
@@ -185,12 +201,14 @@
       "commands": ["editor.action.addSelectionToNextFindMatch"],
       "silent": true
     }
-  ],
+  ]
+  /*
   "terminal.integrated.defaultProfile.osx": "tmux-shell",
   "terminal.integrated.profiles.osx": {
     "tmux-shell": {
       "path": "tmux",
       "args": ["new-session", "-A", "-s", "vscode:${workspaceFolder}"]
     }
-  },
+  }
+  */
 }

@@ -57,6 +57,7 @@ return { -- Highlight, edit, and navigate code
       },
       pattern = {
         ['%.env%..*'] = 'sh',
+        ['Podfile.*'] = 'ruby',
       },
     }
   end,

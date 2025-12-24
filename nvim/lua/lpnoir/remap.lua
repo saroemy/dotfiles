@@ -55,7 +55,11 @@ vim.keymap.set('n', '<leader>sd', vim.diagnostic.setloclist, { desc = 'Show [D]i
 -- BUFFERS
 --
 -- Close the current buffer
-vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = '[X] Close buffer', silent = true })
+vim.keymap.set('n', '<leader>x', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  if vim.bo.buftype == '' then vim.cmd 'bprevious' end
+  vim.api.nvim_buf_delete(current_buf, { force = false })
+end, { desc = '[X] Close buffer', silent = true })
 -- Buffer navigation
 vim.keymap.set('n', '<C-n>', '<cmd>bnext<CR>', { silent = true })
 vim.keymap.set('n', '<C-p>', '<cmd>bprevious<CR>', { silent = true })

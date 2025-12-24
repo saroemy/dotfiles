@@ -40,30 +40,5 @@ return { -- Autoformat
       html = { 'prettier' },
       yaml = { 'prettier' },
     },
-    formatters = {
-      php_cs_fixer = {
-        command = vim.fn.stdpath 'data' .. '/mason/bin/php-cs-fixer',
-        args = { 'fix', '$FILENAME' },
-        -- args = { 'fix', '--rules=@Symfony', '$FILENAME' },
-      },
-      djlint = {
-        args = {
-          '--max-line-length=160',
-          '--max-attribute-length=160',
-          '--blank-line-after-tag="load,extends,include,set,"',
-          '--blank-line-before-tag="block,if,"',
-          '--reformat',
-          '-',
-        },
-      },
-      -- prettier = {
-      --   prepend_args = {
-      --     '--print-width', '120',
-      --     -- altre opzioni che vuoi
-      --     '--single-quote', 'true',
-      --     '--trailing-comma', 'es5',
-      --   },
-      -- },
-    },
   },
 }

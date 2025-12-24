@@ -8,3 +8,4 @@ background-opacity = 0.98
 confirm-close-surface = false
 macos-option-as-alt = left
 term = xterm-256color
+# keybind = shift+enter=text:\x1b\r
