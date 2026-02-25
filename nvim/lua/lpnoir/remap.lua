@@ -34,13 +34,13 @@ vim.keymap.set('v', '<leader>s', [[y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>]])
 vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y]ank in the system clipboard' })
 vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank in the system clipboard' })
 -- Paste preserving the clipboard
-vim.keymap.set('x', 'p', '"_dP', { desc = '[P]aste preserving clipboard' })
+vim.keymap.set('x', 'p', '"_dp', { desc = '[P]aste preserving clipboard' })
 -- Delete preserving clipboard
 vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
 vim.keymap.set('n', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
 -- Paste from system clipboard
-vim.keymap.set('v', '<leader>p', '"+P', { desc = '[P]aste from system clipboard' })
-vim.keymap.set('n', '<leader>p', '"+P', { desc = '[P]aste from system clipboard' })
+vim.keymap.set('v', '<leader>p', '"+p', { desc = '[P]aste from system clipboard' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = '[P]aste from system clipboard' })
 -- Change preserving clipboard
 vim.keymap.set('v', '<leader>c', '"_c', { desc = '[C]hange Preserving clipboard' })
 vim.keymap.set('n', '<leader>c', '"_c', { desc = '[C]hange Preserving clipboard' })
