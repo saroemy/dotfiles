@@ -90,6 +90,18 @@ vim.keymap.set('n', '<leader>h', '<cmd>Dashboard<CR>', { desc = 'Go to [H]ome' }
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = '[G]it [S]tatus' })
 -- Show git preview hunk
 vim.keymap.set('n', '<leader>gh', '<cmd>Gitsigns preview_hunk<CR>', { desc = '[G]it preview [H]unk', silent = true })
+-- Stage hunk (anche in visual per singole righe)
+vim.keymap.set('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<CR>', { desc = '[G]it [A]dd hunk' })
+vim.keymap.set('v', '<leader>ga', ':Gitsigns stage_hunk<CR>', { desc = '[G]it [A]dd hunk' })
+-- Undo stage hunk
+vim.keymap.set('n', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', { desc = '[G]it [U]ndo stage hunk' })
+-- Reset hunk (il restore di cui parlavamo)
+vim.keymap.set('n', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>', { desc = '[G]it [R]eset hunk' })
+vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = '[G]it [R]eset hunk' })
+-- Blame della riga corrente
+vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = '[G]it [B]lame line' })
+-- Diff del file
+vim.keymap.set('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', { desc = '[G]it [D]iff' })
 
 vim.keymap.set('n', '<leader>pr', function()
   vim.cmd 'silent !osascript -e \'tell application "Arc" to reload active tab of window 1\''
