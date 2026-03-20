@@ -4,6 +4,7 @@ plugins=(git vi-mode)
 # ALIASES
 # general aliases
 alias zshconfig="nvim ~/.zshrc"
+alias dotfiles="nvim ~/.dotfiles"
 # eza aliases
 alias ls="eza --icons"
 alias ll="eza -l --icons --git"

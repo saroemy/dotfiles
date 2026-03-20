@@ -97,6 +97,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
       }
     end, { desc = '[F]ind [/] in Open Files' })
 
+    -- Shortcut for find by grep the highlighted text
+    vim.keymap.set('v', '<leader>fg', function()
+      vim.cmd 'noau normal! "vy"'
+      local text = vim.fn.getreg 'v'
+      builtin.grep_string { search = text }
+    end, { desc = '[F]ind by [G]rep highlighted text' })
+
     -- Shortcut for searching your Neovim configuration files
     vim.keymap.set('n', '<leader>fc', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }

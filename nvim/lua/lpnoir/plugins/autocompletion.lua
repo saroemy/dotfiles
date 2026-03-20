@@ -10,6 +10,10 @@ return { -- Autocompletion
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
   opts = {
+    enabled = function()
+      local disabled_filetypes = { 'DressingInput' }
+      return not vim.tbl_contains(disabled_filetypes, vim.bo.filetype)
+    end,
     keymap = { preset = 'default' },
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false, auto_show_delay_ms = 500 } },

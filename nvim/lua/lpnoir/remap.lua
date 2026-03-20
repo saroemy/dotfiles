@@ -34,7 +34,7 @@ vim.keymap.set('v', '<leader>s', [[y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>]])
 vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y]ank in the system clipboard' })
 vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank in the system clipboard' })
 -- Paste preserving the clipboard
-vim.keymap.set('x', 'p', '"_dP', { desc = '[P]aste preserving clipboard' })
+vim.keymap.set('x', 'p', '"_dp', { desc = '[P]aste preserving clipboard' })
 -- Delete preserving clipboard
 vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
 vim.keymap.set('n', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
@@ -55,7 +55,11 @@ vim.keymap.set('n', '<leader>sd', vim.diagnostic.setloclist, { desc = 'Show [D]i
 -- BUFFERS
 --
 -- Close the current buffer
-vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = '[X] Close buffer', silent = true })
+vim.keymap.set('n', '<leader>x', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  if vim.bo.buftype == '' then vim.cmd 'bprevious' end
+  vim.api.nvim_buf_delete(current_buf, { force = false })
+end, { desc = '[X] Close buffer', silent = true })
 -- Buffer navigation
 vim.keymap.set('n', '<C-n>', '<cmd>bnext<CR>', { silent = true })
 vim.keymap.set('n', '<C-p>', '<cmd>bprevious<CR>', { silent = true })
@@ -88,6 +92,18 @@ vim.keymap.set('n', '<leader>h', '<cmd>Dashboard<CR>', { desc = 'Go to [H]ome' }
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = '[G]it [S]tatus' })
 -- Show git preview hunk
 vim.keymap.set('n', '<leader>gh', '<cmd>Gitsigns preview_hunk<CR>', { desc = '[G]it preview [H]unk', silent = true })
+-- Stage hunk (anche in visual per singole righe)
+vim.keymap.set('n', '<leader>ga', '<cmd>Gitsigns stage_hunk<CR>', { desc = '[G]it [A]dd hunk' })
+vim.keymap.set('v', '<leader>ga', ':Gitsigns stage_hunk<CR>', { desc = '[G]it [A]dd hunk' })
+-- Undo stage hunk
+vim.keymap.set('n', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', { desc = '[G]it [U]ndo stage hunk' })
+-- Reset hunk (il restore di cui parlavamo)
+vim.keymap.set('n', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>', { desc = '[G]it [R]eset hunk' })
+vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = '[G]it [R]eset hunk' })
+-- Blame della riga corrente
+vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = '[G]it [B]lame line' })
+-- Diff del file
+vim.keymap.set('n', '<leader>gd', '<cmd>Gitsigns diffthis<CR>', { desc = '[G]it [D]iff' })
 
 vim.keymap.set('n', '<leader>pr', function()
   vim.cmd 'silent !osascript -e \'tell application "Arc" to reload active tab of window 1\''

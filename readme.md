@@ -11,5 +11,7 @@ ln -sf ../.dotfiles/ghostty ~/.config/ghostty
 ln -sf ./.dotfiles/.vimrc ~/.vimrc
 ```
 
+## To install
+- fd
 
 
