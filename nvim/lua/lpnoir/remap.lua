@@ -39,8 +39,8 @@ vim.keymap.set('x', 'p', '"_dP', { desc = '[P]aste preserving clipboard' })
 vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
 vim.keymap.set('n', '<leader>d', '"_d', { desc = '[D]elete Preserving clipboard' })
 -- Paste from system clipboard
-vim.keymap.set('v', '<leader>p', '"+P', { desc = '[P]aste from system clipboard' })
-vim.keymap.set('n', '<leader>p', '"+P', { desc = '[P]aste from system clipboard' })
+vim.keymap.set('v', '<leader>p', '"+p', { desc = '[P]aste from system clipboard' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = '[P]aste from system clipboard' })
 -- Change preserving clipboard
 vim.keymap.set('v', '<leader>c', '"_c', { desc = '[C]hange Preserving clipboard' })
 vim.keymap.set('n', '<leader>c', '"_c', { desc = '[C]hange Preserving clipboard' })
@@ -75,7 +75,9 @@ vim.keymap.set('n', '∆', '<C-w>>', { desc = 'Increase window width' })
 -- PLUGINS
 --
 -- Create keymap for the Tree Explorer
-vim.keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<CR>', { desc = '[P]roject [V]iew', silent = true })
+vim.keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<CR>', { desc = 'Project View', silent = true })
+vim.keymap.set('n', '<leader>fb', '<cmd>NvimTreeFindFile<CR>', { desc = '[F]ind on tree', silent = true })
+
 
 -- Show dashboard
 vim.keymap.set('n', '<leader>h', '<cmd>Dashboard<CR>', { desc = 'Go to [H]ome' })
