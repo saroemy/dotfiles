@@ -6,6 +6,8 @@ vim.g.maplocalleader = ' '
 
 -- Move to end of line in insert mode
 vim.keymap.set('i', '<C-e>', '<C-o>$', { desc = 'Move to end of line in insert mode' })
+vim.keymap.set('i', '<C-l>', '<C-o>l', { desc = 'Move left in insert mode' })
+vim.keymap.set('i', '<C-h>', '<C-o>h', { desc = 'Move right in insert mode' })
 
 -- Save changes
 vim.keymap.set({ 'n', 'i' }, '<C-s>', '<Esc><cmd>silent! w<CR>', { desc = '[S]ave file' })
