@@ -54,6 +54,13 @@ vim.keymap.set('n', '<leader>se', vim.diagnostic.open_float, { desc = 'Show erro
 -- Show diagnostics
 vim.keymap.set('n', '<leader>sd', vim.diagnostic.setloclist, { desc = 'Show [D]iagnostics list' })
 
+-- QUICKFIX
+--
+-- Quickfix list navigation
+vim.keymap.set('n', '<leader>qo', '<cmd>copen<CR>', { desc = '[Q]uickfix [O]pen', silent = true })
+vim.keymap.set('n', '<leader>qn', '<cmd>cnext<CR>', { desc = '[Q]uickfix [N]ext', silent = true })
+vim.keymap.set('n', '<leader>qp', '<cmd>cprevious<CR>', { desc = '[Q]uickfix [P]revious', silent = true })
+
 -- BUFFERS
 --
 -- Close the current buffer
@@ -83,10 +90,6 @@ vim.keymap.set('n', '∆', '<C-w>>', { desc = 'Increase window width' })
 -- Create keymap for the Tree Explorer
 vim.keymap.set('n', '<C-b>', '<cmd>NvimTreeToggle<CR>', { desc = 'Project View', silent = true })
 vim.keymap.set('n', '<leader>fb', '<cmd>NvimTreeFindFile<CR>', { desc = '[F]ind on tree', silent = true })
-
-
--- Show dashboard
-vim.keymap.set('n', '<leader>h', '<cmd>Dashboard<CR>', { desc = 'Go to [H]ome' })
 
 -- GIT
 --
