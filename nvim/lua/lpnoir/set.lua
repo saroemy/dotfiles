@@ -53,11 +53,20 @@ vim.opt.showmode = false
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 
+vim.opt.diffopt:append 'vertical'
+
 -- Views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
 -- Enable automatic reload when files change externally
 vim.opt.autoread = true
+
+-- Auto-reload dei file modificati fuori da nvim. autoread richiede un trigger:
+-- :checktime su focus/buffer change + CursorHold come fallback.
+-- Dentro tmux serve anche `set -g focus-events on` perché FocusGained scatti.
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  command = 'checktime',
+})
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
