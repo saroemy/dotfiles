@@ -18,7 +18,25 @@ return {
       require('catppuccin').setup(opts)
 
       -- inserisci load the colorscheme here
-      vim.cmd.colorscheme 'catppuccin-frappe'
+      -- vim.cmd.colorscheme 'catppuccin-frappe'
+    end,
+  },
+  {
+    'gbprod/nord.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
+      },
+    },
+    config = function(_, opts)
+      require('nord').setup(opts)
+      vim.cmd.colorscheme 'nord'
     end,
   },
 }
