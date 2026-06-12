@@ -214,53 +214,6 @@ installa_nodejs() {
     fi
 }
 
-# Funzione per installare TPM (Tmux Plugin Manager)
-installa_tpm() {
-    echo ""
-    stampa_info "Installazione TPM (Tmux Plugin Manager)..."
-
-    TPM_DIR="$HOME/.tmux/plugins/tpm"
-
-    # Rimuovi directory esistente se presente
-    if [ -d "$TPM_DIR" ]; then
-        stampa_info "TPM già presente, aggiornamento..."
-        rm -rf "$TPM_DIR"
-    fi
-
-    # Clona TPM
-    if git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"; then
-        stampa_ok "TPM installato in $TPM_DIR"
-    else
-        stampa_errore "Errore durante l'installazione di TPM"
-        return 1
-    fi
-}
-
-# Funzione per installare tema Catppuccin per Tmux
-installa_tema_tmux() {
-    echo ""
-    stampa_info "Installazione tema Catppuccin per Tmux..."
-
-    CATPPUCCIN_DIR="$HOME/.config/tmux/plugins/catppuccin"
-
-    # Crea directory se non esiste
-    mkdir -p "$CATPPUCCIN_DIR"
-
-    # Rimuovi tema esistente se presente
-    if [ -d "$CATPPUCCIN_DIR/tmux" ]; then
-        stampa_info "Tema Catppuccin già presente, aggiornamento..."
-        rm -rf "$CATPPUCCIN_DIR/tmux"
-    fi
-
-    # Clona tema Catppuccin versione v2.1.3
-    if git clone -b v2.1.3 https://github.com/catppuccin/tmux.git "$CATPPUCCIN_DIR/tmux"; then
-        stampa_ok "Tema Catppuccin installato in $CATPPUCCIN_DIR/tmux"
-    else
-        stampa_errore "Errore durante l'installazione del tema Catppuccin"
-        return 1
-    fi
-}
-
 # Funzione per configurare vim mode in bashrc
 configura_vim_mode_bash() {
     echo ""
@@ -297,19 +250,16 @@ EOF
     stampa_info "Riavvia il terminale o esegui: source ~/.bashrc"
 }
 
-# Funzione per clonare e configurare dotfiles
+# Funzione per clonare i dotfiles e creare i symlink
 setup_configurazioni() {
     echo ""
     echo "============================================"
-    echo "  Configurazione Neovim e Tmux"
+    echo "  Configurazione dotfiles"
     echo "============================================"
     echo ""
 
-    # Directory configurazioni
     REPO_URL="https://github.com/saroemy/dotfiles.git"
-    REPO_DIR="$HOME/dotfiles"
-    NVIM_CONFIG_DIR="$HOME/.config/nvim"
-    TMUX_CONFIG_DIR="$HOME/.config/tmux"
+    REPO_DIR="$HOME/.dotfiles"
 
     # Controlla se git è installato
     if ! comando_esiste git; then
@@ -317,82 +267,22 @@ setup_configurazioni() {
         return 1
     fi
 
-    # Rimuovi repository esistente se presente
+    # Clona il repo in ~/.dotfiles, o aggiornalo se già presente
     if [ -d "$REPO_DIR" ]; then
-        stampa_info "Repository esistente trovata in $REPO_DIR"
-        stampa_info "Rimozione repository vecchia..."
-        rm -rf "$REPO_DIR"
-    fi
-
-    # Clona repository nella home
-    stampa_info "Clonazione repository da $REPO_URL..."
-    if git clone "$REPO_URL" "$REPO_DIR"; then
-        stampa_ok "Repository clonata in $REPO_DIR"
+        stampa_info "Repository già presente in $REPO_DIR, aggiornamento..."
+        git -C "$REPO_DIR" pull --ff-only || stampa_info "Pull non riuscito, uso la versione locale"
     else
-        stampa_errore "Errore durante la clonazione"
-        return 1
+        stampa_info "Clonazione repository da $REPO_URL..."
+        if git clone "$REPO_URL" "$REPO_DIR"; then
+            stampa_ok "Repository clonata in $REPO_DIR"
+        else
+            stampa_errore "Errore durante la clonazione"
+            return 1
+        fi
     fi
 
-    # === SETUP NEOVIM ===
-    echo ""
-    stampa_info "Setup configurazione Neovim..."
-
-    # Verifica che esista la cartella nvim nella repo
-    if [ ! -d "$REPO_DIR/nvim" ]; then
-        stampa_errore "Cartella nvim non trovata nella repository"
-        return 1
-    fi
-
-    # Backup configurazione Neovim esistente
-    if [ -d "$NVIM_CONFIG_DIR" ]; then
-        backup_nvim="$NVIM_CONFIG_DIR.backup.$(date +%Y%m%d_%H%M%S)"
-        stampa_info "Backup configurazione Neovim esistente in $backup_nvim"
-        mv "$NVIM_CONFIG_DIR" "$backup_nvim"
-    fi
-
-    # Crea directory .config se non esiste
-    mkdir -p "$HOME/.config"
-
-    # Copia cartella nvim in .config
-    cp -r "$REPO_DIR/nvim" "$NVIM_CONFIG_DIR"
-    stampa_ok "Configurazione Neovim installata in $NVIM_CONFIG_DIR"
-
-    # === SETUP TMUX ===
-    echo ""
-    stampa_info "Setup configurazione Tmux..."
-
-    # Verifica che esista il file tmux.conf nella repo
-    if [ ! -f "$REPO_DIR/tmux.conf" ]; then
-        stampa_errore "File tmux.conf non trovato nella repository"
-        return 1
-    fi
-
-    # Crea directory tmux se non esiste
-    mkdir -p "$TMUX_CONFIG_DIR"
-
-    # Backup configurazione Tmux esistente
-    if [ -f "$TMUX_CONFIG_DIR/tmux.conf" ]; then
-        backup_tmux="$TMUX_CONFIG_DIR/tmux.conf.backup.$(date +%Y%m%d_%H%M%S)"
-        stampa_info "Backup configurazione Tmux esistente in $backup_tmux"
-        mv "$TMUX_CONFIG_DIR/tmux.conf" "$backup_tmux"
-    fi
-
-    # Copia file tmux.conf
-    cp "$REPO_DIR/tmux.conf" "$TMUX_CONFIG_DIR/tmux.conf"
-    stampa_ok "Configurazione Tmux installata in $TMUX_CONFIG_DIR/tmux.conf"
-
-    # === PULIZIA ===
-    echo ""
-    stampa_info "Repository clonata mantenuta in $REPO_DIR"
-    stampa_info "Puoi rimuoverla con: rm -rf $REPO_DIR"
-
-    echo ""
-    stampa_ok "Configurazioni installate!"
-    stampa_info "Neovim config: $NVIM_CONFIG_DIR"
-    stampa_info "Tmux config: $TMUX_CONFIG_DIR/tmux.conf"
-    echo ""
-    stampa_info "Avvia Neovim con: nvim"
-    stampa_info "Avvia Tmux con: tmux"
+    # Symlink, TPM e preparazione ambiente sono delegati a setup.sh
+    bash "$REPO_DIR/setup.sh"
 }
 
 # Main: esecuzione principale
@@ -448,14 +338,8 @@ main() {
         installa_nodejs
     fi
 
-    # Setup configurazioni
+    # Setup configurazioni (symlink e TPM via setup.sh)
     setup_configurazioni
-
-    # Installa TPM (Tmux Plugin Manager)
-    installa_tpm
-
-    # Installa tema Catppuccin per Tmux
-    installa_tema_tmux
 
     # Configura vim mode in bashrc
     configura_vim_mode_bash
