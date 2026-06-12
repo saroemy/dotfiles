@@ -1,3 +1,7 @@
+-- Scegli il colorscheme in base alla variabile d'ambiente DEV_THEME (definita in .zshrc),
+-- la stessa usata da tmux.conf: 'catppuccin' oppure qualsiasi altro valore per nord
+local dev_theme = vim.env.DEV_THEME
+
 return {
   {
     'catppuccin/nvim',
@@ -17,8 +21,9 @@ return {
     config = function(_, opts)
       require('catppuccin').setup(opts)
 
-      -- inserisci load the colorscheme here
-      -- vim.cmd.colorscheme 'catppuccin-frappe'
+      if dev_theme == 'catppuccin' then
+        vim.cmd.colorscheme 'catppuccin-frappe'
+      end
     end,
   },
   {
@@ -36,7 +41,10 @@ return {
     },
     config = function(_, opts)
       require('nord').setup(opts)
-      vim.cmd.colorscheme 'nord'
+
+      if dev_theme ~= 'catppuccin' then
+        vim.cmd.colorscheme 'nord'
+      end
     end,
   },
 }

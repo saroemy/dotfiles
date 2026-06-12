@@ -1,10 +1,14 @@
 font-size = 14.5
 adjust-cell-height = 8
 adjust-cell-width = -1
-# theme = Catppuccin Frappe
+# Tema di default; theme-local (non versionato) lo sovrascrive se esiste (vedi in fondo)
 theme = Nord
 background-opacity = 0.98
 confirm-close-surface = false
 macos-option-as-alt = left
 term = xterm-256color
 # keybind = shift+enter=text:\x1b\r
+
+# Include opzionale (il ? evita errori se manca): se il file theme-local
+# esiste accanto a questa config, il suo theme vince sul default qui sopra
+config-file = ?theme-local

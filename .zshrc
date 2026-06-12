@@ -21,6 +21,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 
+# TEMA (catppuccin | nord) — letta da tmux.conf e dal colorscheme di nvim
+export DEV_THEME="catppuccin"
+
 # ACTIVATE FZF
 source <(fzf --zsh)
 
