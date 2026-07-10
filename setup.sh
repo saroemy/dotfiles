@@ -71,6 +71,8 @@ crea_symlink "$DOTFILES/ghostty" "$HOME/.config/ghostty"
 # Solo il file, non la cartella: in ~/.config/tmux vivono anche i plugin
 crea_symlink "$DOTFILES/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 crea_symlink "$DOTFILES/.vimrc" "$HOME/.vimrc"
+# In home così clang-format lo trova per ogni progetto senza un proprio .clang-format
+crea_symlink "$DOTFILES/formatters/.clang-format" "$HOME/.clang-format"
 
 echo ""
 echo "============================================"
